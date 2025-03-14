@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local database
+database.sqlite
+
+# IDE settings
+.idea/
+
+# Public assets (optional: if user uploads images dynamically)
+public/images/
