@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS tools (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    workName TEXT NOT NULL,
+    photoUrl TEXT NOT NULL,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    status TEXT NOT NULL
+);
