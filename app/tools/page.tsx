@@ -15,8 +15,8 @@ export default function Home() {
 
   // データ取得
   useEffect(() => {
-    fetch("http://localhost:8080/api/tools", {
-      credentials: 'include',  // ★ 追加
+    fetch("http://54.81.159.176:8080/api/tools", {
+      credentials: 'include',
     })
       .then((res) => res.json())
       .then((data) =>
@@ -39,11 +39,11 @@ export default function Home() {
     );
 
     try {
-      const response = await fetch(`http://localhost:8080/api/tools/${id}`, {
+      const response = await fetch(`http://54.81.159.176:8080/api/tools/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),
-        credentials: 'include',  // ★ 追加
+        credentials: 'include',
       });
 
       if (!response.ok) {
@@ -60,9 +60,9 @@ export default function Home() {
 
   const deleteTool = async (id: number) => {
     try {
-      await fetch(`http://localhost:8080/api/tools/${id}`, {
+      await fetch(`http://54.81.159.176:8080/api/tools/${id}`, {
         method: "DELETE",
-        credentials: 'include',  // ★ 追加
+        credentials: 'include',
       });
       setTools((prev) => prev.filter((tool) => tool.id !== id));
     } catch (error) {
@@ -136,4 +136,5 @@ export default function Home() {
     </div>
   );
 }
+
 
