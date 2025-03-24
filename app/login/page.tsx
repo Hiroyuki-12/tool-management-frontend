@@ -1,32 +1,32 @@
-'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://54.172.221.49:8080/login', {  // ✅ 修正済み
-        method: 'POST',
+      const response = await fetch("http://54.172.221.49:8080/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({ username, password }),
-        credentials: 'include',
+        credentials: "include",
       });
 
       if (response.ok) {
-        router.push('/tools');
+        router.push("/tools");
       } else {
-        alert('ログイン失敗');
+        alert("ログイン失敗");
       }
     } catch (error) {
-      alert('通信エラー');
+      alert("通信エラー");
       console.error(error);
     }
   };
@@ -37,6 +37,7 @@ export default function LoginPage() {
         <h1 className="text-2xl font-bold mb-6 text-center">ログイン</h1>
         <input
           type="text"
+          name="username" // ⬆️ nameを追加
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="ユーザー名"
@@ -44,12 +45,16 @@ export default function LoginPage() {
         />
         <input
           type="password"
+          name="password" // ⬆️ nameを追加
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="パスワード"
           className="w-full border p-2 mb-4 rounded"
         />
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
           ログイン
         </button>
       </form>

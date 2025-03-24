@@ -19,14 +19,19 @@ export default function Home() {
       credentials: 'include',
     })
       .then((res) => res.json())
-      .then((data) =>
+      .then((data) => {
+        console.log("取得データ:", data);  // 確認用
         setTools(
-          data.map((tool: Tool) => ({
-            ...tool,
+          data.map((tool: any) => ({
+            id: tool.id,
+            workName: tool.work_name,  // ← JSONキーに対応
+            name: tool.tool_name,      // ← JSONキーに対応
+            quantity: tool.quantity,
+            status: tool.status,
             isSelected: tool.isSelected ?? false,
           }))
-        )
-      )
+        );
+      })
       .catch((error) => console.error("データ取得エラー:", error));
   }, []);
 
@@ -60,7 +65,7 @@ export default function Home() {
 
   const deleteTool = async (id: number) => {
     try {
-      await fetch(`http://554.172.221.49:8080/api/tools/${id}`, {
+      await fetch(`http://54.172.221.49:8080/api/tools/${id}`, {  // ← 修正済み
         method: "DELETE",
         credentials: 'include',
       });
@@ -136,5 +141,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
