@@ -15,7 +15,7 @@ export default function Home() {
 
   // データ取得
   useEffect(() => {
-    fetch("http://54.81.159.176:8080/api/tools", {
+    fetch("http://54.172.221.49:8080/api/tools", {
       credentials: 'include',
     })
       .then((res) => res.json())
@@ -39,7 +39,7 @@ export default function Home() {
     );
 
     try {
-      const response = await fetch(`http://54.81.159.176:8080/api/tools/${id}`, {
+      const response = await fetch(`http://54.172.221.49:8080/api/tools/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),
@@ -60,7 +60,7 @@ export default function Home() {
 
   const deleteTool = async (id: number) => {
     try {
-      await fetch(`http://54.81.159.176:8080/api/tools/${id}`, {
+      await fetch(`http://554.172.221.49:8080/api/tools/${id}`, {
         method: "DELETE",
         credentials: 'include',
       });

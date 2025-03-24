@@ -11,7 +11,7 @@ export default function LoginPage() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://54.81.159.176:8080/login', {  // ✅ 修正済み
+      const response = await fetch('http://54.172.221.49:8080/login', {  // ✅ 修正済み
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

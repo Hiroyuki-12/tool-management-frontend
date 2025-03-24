@@ -14,7 +14,7 @@ export default function AddToolPage() {
     const newTool = { workName, name, quantity, status: '', isSelected: false };
 
     try {
-      const response = await fetch('http://54.81.159.176:8080/api/tools', {  // ✅ 修正箇所
+      const response = await fetch('http://54.172.221.49:8080/api/tools', {  // ✅ 修正箇所
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
