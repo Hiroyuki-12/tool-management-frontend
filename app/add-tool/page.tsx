@@ -11,10 +11,16 @@ export default function AddToolPage() {
   const handleAddTool = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newTool = { workName, name, quantity, status: '', isSelected: false };
+    const newTool = {
+      work_name: workName, // ⬆️ JSONキー修正
+      tool_name: name,     // ⬆️ JSONキー修正
+      quantity,
+      status: '',
+      isSelected: false,
+    };
 
     try {
-      const response = await fetch('http://54.172.221.49:8080/api/tools', {  // ✅ 修正箇所
+      const response = await fetch('http://54.172.221.49:8080/api/tools', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
